@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-
+    public  static String KEY = "mykey";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,7 +14,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleClick(View view) {
-        Intent loginIntent = new Intent(MainActivity.this,LoginActivity.class);
+        Intent loginIntent =
+                new Intent(this,LoginActivity.class); //explicit intent
+        loginIntent.putExtra(KEY,"abdul");
         startActivity(loginIntent);
     }
 }

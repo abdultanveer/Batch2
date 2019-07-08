@@ -8,13 +8,25 @@
 
     <Button
         android:id="@+id/button3"
-        android:onClick="handleClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="57dp"
         android:layout_marginLeft="57dp"
         android:layout_marginTop="193dp"
+        android:onClick="handleClick"
         android:text="login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginRight="95dp"
+        android:onClick="handleClick"
+        android:text="alarm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button3" />
 </android.support.constraint.ConstraintLayout>

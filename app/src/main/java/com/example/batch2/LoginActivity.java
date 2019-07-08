@@ -15,14 +15,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         String name = getIntent().getExtras().getString(MainActivity.KEY);
 
-        TextView salTextView = findViewById(R.id.textViewSalution);
+        TextView salTextView = findViewById(R.id.textViewSalution);//taking handle
         salTextView.setText(name);
     }
 
     public void clickHandler(View view) {
         switch (view.getId()){
             case R.id.buttonDialer:
-                Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:1234567890"));//implicit intent
+                Intent dialIntent = new Intent(Intent.ACTION_DIAL,
+                        Uri.parse("tel:1234567890"));//implicit intent
                 startActivity(dialIntent);
                 break;
             case R.id.buttonCalculator:

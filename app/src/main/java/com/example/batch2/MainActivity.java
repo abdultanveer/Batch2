@@ -78,15 +78,20 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.mbutton:
-               /* Intent mIntent = new Intent("abdul.calendar");
-                startActivity(mIntent);*/
-               Intent commonIntent = new Intent(Intent.ACTION_VIEW,
+               Intent mIntent = new Intent("abdul.calendar");
+               int res = add(10,20);
+               startActivity(mIntent);
+               /*Intent commonIntent = new Intent(Intent.ACTION_VIEW,
                        Uri.parse("http://www.android.com"));
-               startActivity(commonIntent);
+               startActivity(commonIntent);*/
 
                 break;
         }
 
+    }
+
+    private int add(int i, int i1) {
+        return i+i1;
     }
 
     @Override

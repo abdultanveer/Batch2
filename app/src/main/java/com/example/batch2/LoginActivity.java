@@ -13,10 +13,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        String name = getIntent().getExtras().getString(MainActivity.KEY);
+       /* String name = getIntent().getExtras().getString(MainActivity.KEY);
 
         TextView salTextView = findViewById(R.id.textViewSalution);//taking handle
-        salTextView.setText(name);
+        salTextView.setText(name);*/
     }
 
     public void clickHandler(View view) {

@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 createAlarm("wakeup",19,48);
 
                 break;
+            case R.id.mbutton:
+                Intent mIntent = new Intent("abdul.android.batch2");
+                startActivity(mIntent);
+                break;
         }
 
     }

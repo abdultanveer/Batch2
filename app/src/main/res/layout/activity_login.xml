@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextfirst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -16,12 +16,11 @@
         android:layout_marginTop="55dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextsecond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -30,7 +29,7 @@
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextfirst" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -41,7 +40,7 @@
         android:layout_marginTop="37dp"
         android:text="CheckBox"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextsecond" />
 
     <Button
         android:id="@+id/buttonDialer"
@@ -62,6 +61,7 @@
         android:layout_marginLeft="53dp"
         android:layout_marginTop="50dp"
         android:text="calculator"
+        android:onClick="clickHandler"
         app:layout_constraintStart_toEndOf="@+id/buttonDialer"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 

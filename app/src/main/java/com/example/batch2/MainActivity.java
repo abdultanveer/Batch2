@@ -1,12 +1,15 @@
 package com.example.batch2;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.provider.AlarmClock;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,18 +70,36 @@ public class MainActivity extends AppCompatActivity {
                 Intent loginIntent =
                         new Intent(this,LoginActivity.class); //explicit intent
                 loginIntent.putExtra(KEY,"abdul");
-                startActivity(loginIntent);
+                startActivityForResult(loginIntent,007);
+                //mainactivty = parent, loginactivity = child
                 break;
             case R.id.buttonAlarm:
                 createAlarm("wakeup",19,48);
 
                 break;
             case R.id.mbutton:
-                Intent mIntent = new Intent("abdul.android.batch2");
-                startActivity(mIntent);
+               /* Intent mIntent = new Intent("abdul.calendar");
+                startActivity(mIntent);*/
+               Intent commonIntent = new Intent(Intent.ACTION_VIEW,
+                       Uri.parse("http://www.android.com"));
+               startActivity(commonIntent);
+
                 break;
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent resIntent) {
+        super.onActivityResult(requestCode, resultCode, resIntent);
+        TextView resTextView = findViewById(R.id.textViewres);
+        if(requestCode == 007){
+            String first = resIntent.getExtras().getString(LoginActivity.F_KEY);
+            String second = resIntent.getExtras().getString(LoginActivity.S_KEY);
+
+            resTextView.setText(first + "\n"+second);
+           // Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void createAlarm(String message, int hour, int minutes) {

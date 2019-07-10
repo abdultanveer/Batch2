@@ -1,8 +1,11 @@
 package com.example.batch2;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.provider.AlarmClock;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity { //AppCompatActivity -- its backwards compatible
     public  static String KEY = "mykey";
     public  static String TAG = MainActivity.class.getSimpleName();
 
@@ -86,8 +89,19 @@ public class MainActivity extends AppCompatActivity {
                startActivity(commonIntent);*/
 
                 break;
+            case R.id.buttonContact:
+                getContact();
+                break;
         }
 
+    }
+
+    private void getContact(){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, 987);
+        }
     }
 
     private int add(int i, int i1) {
@@ -104,6 +118,20 @@ public class MainActivity extends AppCompatActivity {
 
             resTextView.setText(first + "\n"+second);
            // Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+        }
+        if(requestCode == 987){
+            Uri contactUri = resIntent.getData();  //uri is like url which points to the db table
+            Cursor cursor = getContentResolver().query(contactUri, null,
+                    null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                /*int numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                String number = cursor.getString(numberIndex);*/
+                int nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
+                String name = cursor.getString(nameIndex);
+                resTextView.setText(name);
+
+            }
+
         }
     }
 

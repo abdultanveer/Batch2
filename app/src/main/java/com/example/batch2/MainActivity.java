@@ -11,11 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity { //AppCompatActivity -- its backwards compatible
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener { //AppCompatActivity -- its backwards compatible
     public  static String KEY = "mykey";
     public  static String TAG = MainActivity.class.getSimpleName();
 
@@ -23,10 +25,8 @@ public class MainActivity extends AppCompatActivity { //AppCompatActivity -- its
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);//inflating[parsing] activity_main  -- layoutinflater
-        /*Button loginButton = new Button(this);
-        loginButton.setText("login");
-        loginButton.setWidth(100);*/
-        Toast.makeText(this, "created - m/y allocated", Toast.LENGTH_SHORT).show();
+        Spinner mSpinner = findViewById(R.id.spinnercountries);
+        mSpinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -143,5 +143,16 @@ public class MainActivity extends AppCompatActivity { //AppCompatActivity -- its
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String item = parent.getItemAtPosition(position).toString();
+        Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

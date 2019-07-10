@@ -3,6 +3,7 @@ package com.example.batch2;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,6 +33,7 @@ public class MyListActivity extends AppCompatActivity implements AdapterView.OnI
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(this);
+        registerForContextMenu(listView);
     }
 
     @Override
@@ -55,6 +57,23 @@ public class MyListActivity extends AppCompatActivity implements AdapterView.OnI
                  break;
          }
 
+        return true;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.mylist_context_menu,menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+         super.onContextItemSelected(item);
+         switch (item.getItemId()){
+             case R.id.del:
+                 Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show();
+                 break;
+         }
         return true;
     }
 

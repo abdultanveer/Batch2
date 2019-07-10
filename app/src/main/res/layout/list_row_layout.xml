@@ -12,11 +12,4 @@
         android:textStyle="bold"
         android:text="TextView" />
 
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_gravity="right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="CheckBox" />
 </LinearLayout>

@@ -7,9 +7,7 @@
         android:id="@+id/mytextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold"
+        style="@style/mytextstyle"
         android:text="TextView" />
 
 </LinearLayout>
